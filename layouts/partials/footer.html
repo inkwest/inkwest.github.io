@@ -1,0 +1,12 @@
+<footer class="border-t border-gray-200 dark:border-gray-800 py-12 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+      <a href="{{ .Site.Params.repoURL }}" class="hover:text-gray-900 dark:hover:text-white transition-colors">GitHub</a>
+      <a href="{{ .Site.Params.repoURL }}/blob/main/README.md" class="hover:text-gray-900 dark:hover:text-white transition-colors">Docs</a>
+      <a href="{{ .Site.Params.repoURL }}/blob/main/LICENSE" class="hover:text-gray-900 dark:hover:text-white transition-colors">License</a>
+    </div>
+    <p class="text-sm text-gray-400 dark:text-gray-500">
+      &copy; {{ now.Format "2006" }} Inkwest. Built with Hugo.
+    </p>
+  </div>
+</footer>

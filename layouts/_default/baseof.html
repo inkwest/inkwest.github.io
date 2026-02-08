@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" class="scroll-smooth">
+<head>
+  {{- partial "head.html" . -}}
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100 font-sans antialiased transition-colors duration-200">
+  {{- partial "nav.html" . -}}
+  <main>
+    {{- block "main" . }}{{- end }}
+  </main>
+  {{- partial "footer.html" . -}}
+</body>
+</html>

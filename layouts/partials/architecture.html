@@ -1,0 +1,47 @@
+<section id="architecture" class="py-16 px-6">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">Architecture</h2>
+
+    <div class="mb-12 rounded-xl bg-gray-50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 p-8">
+      <pre class="mermaid flex justify-center">
+---
+config:
+  themeVariables:
+    fontSize: 16px
+---
+graph LR
+    A["React UI<br/>(Tailwind)"] <-->|WebSocket| B["FastAPI<br/>(async)"]
+    B --> C["Claude API"]
+    B --> D["Tool Executor"]
+    B --> E["PostgreSQL"]
+    D --> F["kubectl<br/>(read-only)"]
+      </pre>
+    </div>
+
+    <div class="mb-10">
+      <h3 class="text-lg font-semibold text-center mb-6">Tech Stack</h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        {{ $badges := slice "FastAPI" "React" "TypeScript" "PostgreSQL" "SQLAlchemy" "Docker" "Kubernetes" "Tailwind CSS" }}
+        {{ range $badges }}
+        <span class="px-3 py-1.5 text-sm font-medium rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300">
+          {{ . }}
+        </span>
+        {{ end }}
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-semibold text-center mb-6">AI Providers</h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        {{ range .Params.providers }}
+        <span class="px-3 py-1.5 text-sm rounded-full {{ if .tested }}bg-brand-500/10 border border-brand-500/20 dark:border-brand-500/30 text-brand-700 dark:text-brand-400{{ else }}bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400{{ end }}">
+          {{ .name }}
+          <span class="text-gray-400 dark:text-gray-500 ml-1">· {{ .note }}</span>
+          {{ if not .tested }}<span class="ml-1 text-xs text-amber-500 dark:text-amber-400" title="Implemented but not yet tested">*</span>{{ end }}
+        </span>
+        {{ end }}
+      </div>
+      <p class="text-center text-xs text-gray-400 dark:text-gray-500 mt-3">* Implemented but not yet tested</p>
+    </div>
+  </div>
+</section>

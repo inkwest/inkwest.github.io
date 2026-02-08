@@ -1,0 +1,49 @@
+<section id="comparison" class="py-16 px-6 bg-gray-50 dark:bg-gray-900/30">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">How Does Inkwest Compare?</h2>
+    <p class="text-center text-gray-500 dark:text-gray-400 mb-12 max-w-2xl mx-auto">See how Inkwest stacks up against other AI-powered Kubernetes tools.</p>
+
+    <div class="space-y-3">
+      {{ range .Params.comparisons }}
+      <details class="group rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900/50 overflow-hidden">
+        <summary class="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer select-none hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+          <div class="flex items-center gap-3">
+            <span class="font-semibold text-gray-900 dark:text-white">{{ .name }}</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700">{{ .tag }}</span>
+          </div>
+          <svg class="w-5 h-5 text-gray-400 shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </summary>
+        <div class="px-6 pb-5 pt-2 border-t border-gray-100 dark:border-gray-800">
+          <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">{{ .description }}</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-green-600 dark:text-green-400 mb-2">Strengths</h4>
+              <ul class="space-y-1.5">
+                {{ range .pros }}
+                <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <svg class="w-4 h-4 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                  {{ . }}
+                </li>
+                {{ end }}
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-xs font-semibold uppercase tracking-wider text-red-500 dark:text-red-400 mb-2">Limitations</h4>
+              <ul class="space-y-1.5">
+                {{ range .cons }}
+                <li class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                  <svg class="w-4 h-4 text-red-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                  {{ . }}
+                </li>
+                {{ end }}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+      {{ end }}
+    </div>
+  </div>
+</section>

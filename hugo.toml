@@ -1,0 +1,23 @@
+baseURL = "https://inkwest.github.io/"
+languageCode = "en-us"
+title = "Inkwest"
+
+[params]
+  tagline = "AI-Powered Kubernetes Debugging"
+  subtitle = "Chat with an AI assistant that understands your clusters, executes read-only kubectl commands, and helps you debug issues in real time."
+  description = "Inkwest is an AI-powered Kubernetes debugging assistant with a chat interface backed by Claude that executes read-only kubectl commands."
+  repoURL = "https://github.com/inkwest/inkwest"
+  ctaText = "Discover"
+  ctaLink = "#features"
+  [[params.demoVideos]]
+    title = "First Debug"
+    url = "https://www.youtube.com/embed/RVKJkGSeKZg"
+  [[params.demoVideos]]
+    title = "Admin Overview"
+    url = "https://www.youtube.com/embed/hce-Bpcj1HM"
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    noClasses = true
+    lineNos = false

@@ -1,0 +1,35 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Site.Title }} — {{ .Site.Params.tagline }}</title>
+<meta name="description" content="{{ .Site.Params.description }}">
+<meta property="og:title" content="{{ .Site.Title }} — {{ .Site.Params.tagline }}">
+<meta property="og:description" content="{{ .Site.Params.description }}">
+<meta property="og:type" content="website">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+{{ with resources.Get "css/main.css" | css.TailwindCSS }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}">
+{{ end }}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  document.querySelectorAll('.mermaid').forEach(function(el) {
+    el.setAttribute('data-original', el.innerHTML);
+  });
+  function initMermaid() {
+    var dark = document.documentElement.classList.contains('dark');
+    mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'default', flowchart: { useMaxWidth: true } });
+    mermaid.run({ querySelector: '.mermaid' });
+  }
+  initMermaid();
+  document.getElementById('theme-toggle')?.addEventListener('click', function() {
+    setTimeout(function() {
+      document.querySelectorAll('.mermaid').forEach(function(el) {
+        el.removeAttribute('data-processed');
+        el.innerHTML = el.getAttribute('data-original');
+      });
+      initMermaid();
+    }, 50);
+  });
+</script>
